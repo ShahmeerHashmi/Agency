@@ -1,54 +1,122 @@
-"use client"
-import Image from 'next/image'
+'use client'
+import { FaExternalLinkAlt, FaEye, FaHeart, FaCode } from 'react-icons/fa'
 import { motion } from 'framer-motion'
-import { FaArrowRight, FaExternalLinkAlt } from 'react-icons/fa'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+import Image from 'next/image'
 
 const projects = [
   {
     id: 1,
     title: 'VR Training System for Manufacturing',
     description: 'Immersive training solution reducing onboarding time by 40%',
-    image: '/image.png',
+    image: 'https://images.unsplash.com/photo-1592478411213-6153e4ebc696?w=800&h=400&fit=crop',
     labels: ['3D Modeling', 'AR/VR', 'Unity'],
-    link: '#'
+    link: '#',
+    views: '12.5K',
+    likes: '847',
+    status: 'Featured',
+    category: 'Enterprise',
+    difficulty: 'Advanced',
+    color: 'from-blue-500 to-purple-600',
   },
   {
     id: 2,
     title: 'Healthcare Simulation Platform',
-    description: 'Medical procedure training with real-time feedback',
-    image: '/image.png',
+    description: 'Medical procedure training with real-time feedback and AI-powered assessment',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop',
     labels: ['WebXR', 'React', 'Three.js'],
-    link: '#'
+    link: '#',
+    views: '8.2K',
+    likes: '632',
+    status: 'Live',
+    category: 'Healthcare',
+    difficulty: 'Expert',
+    color: 'from-green-400 to-blue-500',
   },
   {
     id: 3,
     title: 'Industrial Maintenance Trainer',
-    description: 'Equipment maintenance training with AI assistance',
-    image: '/image.png',
+    description: 'Equipment maintenance training with AI assistance and predictive analytics',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=400&fit=crop',
     labels: ['AI Integration', '3D Animation', 'IoT'],
-    link: '#'
+    link: '#',
+    views: '15.1K',
+    likes: '1.2K',
+    status: 'New',
+    category: 'Industrial',
+    difficulty: 'Intermediate',
+    color: 'from-orange-400 to-red-500',
   },
   {
     id: 4,
     title: 'Safety Compliance Simulator',
-    description: 'Workplace hazard identification training',
-    image: '/image.png',
+    description: 'Workplace hazard identification training with real-world scenario testing',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop',
     labels: ['Scenario Design', 'Analytics', 'Multiplayer'],
-    link: '#'
+    link: '#',
+    views: '6.8K',
+    likes: '421',
+    status: 'Beta',
+    category: 'Safety',
+    difficulty: 'Beginner',
+    color: 'from-yellow-400 to-orange-500',
   },
   {
     id: 5,
     title: 'Retail VR Showroom',
-    description: 'Virtual product demonstration platform',
-    image: '/image.png',
+    description: 'Virtual product demonstration platform with haptic feedback integration',
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=400&fit=crop',
     labels: ['E-commerce', '3D Configurator', 'WebGL'],
-    link: '#'
-  }
+    link: '#',
+    views: '9.3K',
+    likes: '756',
+    status: 'Popular',
+    category: 'Retail',
+    difficulty: 'Advanced',
+    color: 'from-pink-400 to-purple-600',
+  },
+  {
+    id: 6,
+    title: 'AI-Powered Code Assistant',
+    description: 'Next-generation development environment with intelligent code completion',
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop',
+    labels: ['AI/ML', 'Developer Tools', 'Cloud'],
+    link: '#',
+    views: '22.7K',
+    likes: '1.8K',
+    status: 'Trending',
+    category: 'DevTools',
+    difficulty: 'Expert',
+    color: 'from-cyan-400 to-blue-600',
+  },
 ]
 
+const statusColors = {
+  Featured: 'bg-gradient-to-r from-yellow-400 to-orange-500',
+  Live: 'bg-gradient-to-r from-green-400 to-emerald-500',
+  New: 'bg-gradient-to-r from-blue-400 to-cyan-500',
+  Beta: 'bg-gradient-to-r from-purple-400 to-pink-500',
+  Popular: 'bg-gradient-to-r from-pink-400 to-rose-500',
+  Trending: 'bg-gradient-to-r from-orange-400 to-red-500',
+}
+
 export default function Projects() {
-  const containerRef = useRef(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [activeFilter, setActiveFilter] = useState('All')
+
+  const categories = [
+    'All',
+    'Enterprise',
+    'Healthcare',
+    'Industrial',
+    'Safety',
+    'Retail',
+    'DevTools',
+  ]
+  const filteredProjects =
+    activeFilter === 'All'
+      ? projects
+      : projects.filter((project) => project.category === activeFilter)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -56,143 +124,118 @@ export default function Projects() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.2,
+      },
+    },
   }
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 60, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
     },
-    hover: {
-      y: -10,
-      transition: { duration: 0.3 }
-    }
-  }
-
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5 }
-    },
-    hover: {
-      scale: 1.02,
-      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-      transition: { duration: 0.3 }
-    }
   }
 
   return (
-    <motion.section 
-      className="max-w-screen-xl mx-auto py-20 px-6 sm:px-12"
+    <motion.section
+      ref={containerRef}
+      className="w-full py-20 px-0 sm:px-0 bg-[#18122B] shadow-2xl"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      ref={containerRef}
     >
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
-        <motion.h2 
-          className="text-4xl sm:text-5xl font-bold text-green-600 mb-4 md:mb-0"
-          variants={itemVariants}
-        >
-          Our <span className="text-gray-800">Projects</span>
-        </motion.h2>
-        
-        <motion.div variants={itemVariants}>
-          <button className="flex items-center text-green-600 hover:text-green-700 font-medium group">
-            View all projects
-            <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-          </button>
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-8">
+        <motion.div className="text-center mb-16" variants={itemVariants}>
+          <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500 bg-clip-text text-transparent mb-4">
+            Our <span className="text-white">Projects</span>
+          </h2>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            Explore our featured work, showcasing innovation across industries with immersive
+            technology and creative solutions.
+          </p>
         </motion.div>
-      </div>
 
-      <div className="relative">
-        {/* Gradient fade effect on scroll */}
-        <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              className={`px-5 py-2 rounded-full font-semibold transition-all text-sm border-2 ${
+                activeFilter === cat
+                  ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white border-transparent shadow-lg'
+                  : 'bg-[#232046] text-pink-200 border-pink-700 hover:bg-gradient-to-r hover:from-pink-600 hover:to-purple-600 hover:text-white'
+              }`}
+              onClick={() => setActiveFilter(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
 
-        <motion.div 
-          className="flex space-x-6 pb-6 overflow-x-auto scrollbar-hide"
-          whileTap={{ cursor: "grabbing" }}
+        {/* Projects Grid */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+          variants={containerVariants}
         >
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <motion.div
               key={project.id}
-              className="relative min-w-[300px] sm:min-w-[350px] rounded-xl overflow-hidden shadow-lg flex-shrink-0 group"
-              variants={cardVariants}
-              whileHover="hover"
+              className="relative group bg-[#232046] rounded-2xl overflow-hidden shadow-xl border border-[#2d2250] hover:border-pink-500 transition-all"
+              variants={itemVariants}
             >
-              <div className="relative h-64 overflow-hidden">
-                <Image 
-                  src={project.image} 
+              <div className="relative h-48 w-full">
+                <Image
+                  src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover rounded-t-2xl"
                 />
-                
-                {/* Labels */}
-                <div className="absolute top-4 right-4 flex flex-wrap justify-end gap-2">
-                  {project.labels.map((label, idx) => (
-                    <motion.span
-                      key={idx}
-                      className="bg-gray-200 bg-opacity-90 text-xs font-semibold text-gray-800 rounded-full px-3 py-1 shadow-sm"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.2 + idx * 0.1 }}
+                <span
+                  className={`absolute top-4 left-4 px-3 py-1 text-xs font-bold rounded-full ${statusColors[project.status as keyof typeof statusColors]}`}
+                >
+                  {project.status}
+                </span>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold bg-gradient-to-r from-pink-400 via-fuchsia-400 to-purple-400 bg-clip-text text-transparent mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-gray-300 text-sm mb-3">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.labels.map((label, i) => (
+                    <span
+                      key={i}
+                      className="px-2 py-1 text-xs rounded-full bg-[#2d2250] text-pink-200 border border-pink-700"
                     >
                       {label}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
-              </div>
-
-              {/* Content overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <motion.h3 
-                  className="text-white text-xl font-bold mb-2"
-                  initial={{ y: 20 }}
-                  animate={{ y: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  {project.title}
-                </motion.h3>
-                <motion.p 
-                  className="text-white/80 text-sm mb-4"
-                  initial={{ y: 20 }}
-                  animate={{ y: 0 }}
-                  transition={{ delay: 0.25 }}
-                >
-                  {project.description}
-                </motion.p>
-                <motion.a
-                  href={project.link}
-                  className="inline-flex items-center text-green-400 hover:text-green-300 text-sm font-medium"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  View case study
-                  <FaExternalLinkAlt className="ml-2" />
-                </motion.a>
-              </div>
-
-              {/* Default visible info */}
-              <div className="bg-white p-4">
-                <h3 className="text-gray-800 font-semibold">{project.title}</h3>
-                <div className="flex justify-between items-center mt-2">
-                  <span className="text-green-600 text-sm font-medium">View Project</span>
-                  <FaArrowRight className="text-green-600" />
+                <div className="flex items-center justify-between text-xs text-gray-400">
+                  <span className="flex items-center gap-1">
+                    <FaEye className="text-pink-400" /> {project.views}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <FaHeart className="text-pink-400" /> {project.likes}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <FaCode className="text-purple-400" /> {project.difficulty}
+                  </span>
                 </div>
               </div>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-4 right-4 bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2 rounded-full shadow-lg hover:scale-110 transition-transform"
+              >
+                <FaExternalLinkAlt />
+              </a>
             </motion.div>
           ))}
         </motion.div>
