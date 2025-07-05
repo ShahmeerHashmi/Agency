@@ -23,15 +23,17 @@ export default async function HomePage() {
 
   return (
     <main>
+    <div>
+     </div>
       
-      <div>
-        <Hero/>
-        <Services />
-        <About />
-        <Projects />
-        <Team />
-        <ContactUs />
-      </div>
+          <Hero />
+          <Services />
+          <About />
+          <Projects />
+          <Team />
+          <ContactUs />
+         
+        
     </main>
   )
 }
