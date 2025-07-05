@@ -56,10 +56,10 @@ export default function About() {
     }),
     hover: {
       y: -8,
-      boxShadow: "0 10px 25px -5px rgba(156, 163, 175, 0.1)",
-      transition: { 
+      boxShadow: '0 10px 25px -5px rgba(156, 163, 175, 0.1)',
+      transition: {
         y: { duration: 0.2 },
-        boxShadow: { duration: 0.3 }
+        boxShadow: { duration: 0.3 },
       },
     },
   }
@@ -99,7 +99,7 @@ export default function About() {
 
   return (
     <motion.section
-      className="w-full py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#18122B] to-[#251e43]"
+      className="w-full overflow-x-hidden py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#18122B] to-[#251e43]"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -108,7 +108,7 @@ export default function About() {
       <div className="max-w-7xl mx-auto">
         {/* Header with animated gradient text */}
         <motion.div className="text-center mb-16" variants={itemVariants}>
-          <motion.span 
+          <motion.span
             className="text-sm font-semibold tracking-wider text-purple-300 uppercase"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -122,7 +122,7 @@ export default function About() {
           >
             Crafting Digital Excellence
           </motion.h2>
-          <motion.div 
+          <motion.div
             className="mx-auto mt-4 h-1 w-24 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
@@ -149,25 +149,6 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
             </motion.div>
 
-            {/* Secondary image */}
-            <motion.div
-              className="absolute -bottom-8 -right-8 w-2/3 h-2/3 rounded-xl overflow-hidden shadow-xl z-20 border-2 border-white/10"
-              variants={imageVariants}
-              whileHover="hover"
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 0.3 }}
-            >
-              <Image
-                src="/office-space.jpg"
-                alt="Our office space"
-                width={400}
-                height={300}
-                className="object-cover w-full h-full"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent" />
-            </motion.div>
-
             {/* Decorative elements */}
             <motion.div
               className="absolute -top-6 -left-6 w-40 h-40 bg-purple-500 rounded-full blur-3xl opacity-20 -z-10"
@@ -191,40 +172,42 @@ export default function About() {
               </h3>
               <div className="space-y-4 text-purple-100">
                 <p>
-                  We&apos;re a premier software development company specializing in custom-built solutions that transform businesses. 
-                  Our team combines technical expertise with creative problem-solving to deliver exceptional results.
+                  We&apos;re a premier software development company specializing in custom-built
+                  solutions that transform businesses. Our team combines technical expertise with
+                  creative problem-solving to deliver exceptional results.
                 </p>
                 <p>
-                  Since our founding, we&apos;ve helped organizations across finance, healthcare, technology, and government 
-                  sectors achieve their digital transformation goals through innovative software solutions.
+                  Since our founding, we&apos;ve helped organizations across finance, healthcare,
+                  technology, and government sectors achieve their digital transformation goals
+                  through innovative software solutions.
                 </p>
                 <p>
-                  What sets us apart is our commitment to understanding your unique challenges and crafting tailored 
-                  solutions that drive measurable business impact.
+                  What sets us apart is our commitment to understanding your unique challenges and
+                  crafting tailored solutions that drive measurable business impact.
                 </p>
               </div>
             </motion.div>
 
             {/* Stats */}
-            <motion.div 
+            <motion.div
               className="grid grid-cols-3 gap-4"
               initial="hidden"
               animate="visible"
               variants={containerVariants}
             >
               {[
-                { number: "50+", label: "Projects" },
-                { number: "100%", label: "Satisfaction" },
-                { number: "15+", label: "Industries" },
+                { number: '50+', label: 'Projects' },
+                { number: '100%', label: 'Satisfaction' },
+                { number: '15+', label: 'Industries' },
               ].map((stat, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   className="bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/10 text-center"
                   variants={itemVariants}
                   custom={i}
-                  whileHover={{ 
+                  whileHover={{
                     y: -5,
-                    backgroundColor: "rgba(255,255,255,0.08)"
+                    backgroundColor: 'rgba(255,255,255,0.08)',
                   }}
                 >
                   <div className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
@@ -238,19 +221,19 @@ export default function About() {
         </div>
 
         {/* Features grid */}
-        <motion.div 
+        <motion.div
           className="mt-20"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
         >
-          <motion.h3 
+          <motion.h3
             className="text-2xl sm:text-3xl font-semibold text-center text-white mb-12"
             variants={itemVariants}
           >
             Why Choose <span className="text-purple-400">Us</span>
           </motion.h3>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, i) => (
               <motion.div
@@ -273,7 +256,7 @@ export default function About() {
         </motion.div>
 
         {/* CTA */}
-        <motion.div 
+        <motion.div
           className="mt-20 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -281,9 +264,9 @@ export default function About() {
         >
           <motion.button
             className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium rounded-xl hover:shadow-xl hover:shadow-pink-500/20 transition-all"
-            whileHover={{ 
+            whileHover={{
               scale: 1.03,
-              background: "linear-gradient(45deg, #ec4899, #8b5cf6)"
+              background: 'linear-gradient(45deg, #ec4899, #8b5cf6)',
             }}
             whileTap={{ scale: 0.97 }}
           >
