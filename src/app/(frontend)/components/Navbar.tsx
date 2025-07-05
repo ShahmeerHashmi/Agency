@@ -7,7 +7,6 @@ import { useState } from 'react'
 import { FiSearch, FiX, FiMenu, FiChevronDown } from 'react-icons/fi'
 import { FaDiscord, FaTwitter, FaGithub } from 'react-icons/fa'
 
-
 const Navbar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
@@ -408,7 +407,7 @@ const Navbar = () => {
             </motion.div>
           )}
         </AnimatePresence>
-         {/* MOBILE MENU */}
+        {/* MOBILE MENU */}
         <AnimatePresence initial={false}>
           {isMobileMenuOpen && (
             <motion.div
@@ -419,11 +418,7 @@ const Navbar = () => {
               variants={mobileMenuVariants}
             >
               {navLinks.map((navLink) => (
-                <motion.div
-                  key={navLink.path}
-                  className="mb-2"
-                  variants={mobileItemVariants}
-                >
+                <motion.div key={navLink.path} className="mb-2" variants={mobileItemVariants}>
                   <div className="flex items-center justify-between">
                     <Link
                       href={navLink.path}
@@ -436,9 +431,7 @@ const Navbar = () => {
                       <button
                         className="ml-2"
                         onClick={() =>
-                          setActiveDropdown(
-                            activeDropdown === navLink.path ? null : navLink.path
-                          )
+                          setActiveDropdown(activeDropdown === navLink.path ? null : navLink.path)
                         }
                         aria-label="Toggle dropdown"
                       >
@@ -483,7 +476,6 @@ const Navbar = () => {
             </motion.div>
           )}
         </AnimatePresence>
-
       </motion.nav>
     </>
   )

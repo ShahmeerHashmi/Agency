@@ -140,7 +140,7 @@ export default function About() {
               whileHover="hover"
             >
               <Image
-                src="/team-working.jpg"
+                src="/public/team-working.jpg"
                 alt="Our team working together"
                 width={600}
                 height={400}
