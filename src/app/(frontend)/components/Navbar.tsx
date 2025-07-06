@@ -205,7 +205,13 @@ const Navbar = () => {
           variants={logoVariants}
         >
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/Logo.png" alt="Logo" width={100} height={100} className="rounded-full" />
+            <Image
+              src="https://res.cloudinary.com/drya6shup/image/upload/v1751793609/ChatGPT_Image_Jul_5_2025_07_56_18_PM_kkapmq.png"
+              alt="Logo"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />
             <span>Webnity Studio</span>
           </Link>
         </motion.div>
@@ -359,7 +365,13 @@ const Navbar = () => {
           className="text-xl font-['Montserrat'] font-extrabold text-white flex items-center gap-2"
           variants={logoVariants}
         >
-          <Image src="/Logo.png" alt="Logo" width={40} height={40} className="rounded-full" />
+          <Image
+            src="https://res.cloudinary.com/drya6shup/image/upload/v1751793609/ChatGPT_Image_Jul_5_2025_07_56_18_PM_kkapmq.png"
+            alt="Logo"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
           <span>WebnityStudio</span>
         </motion.div>
         <div className="flex items-center space-x-4">
